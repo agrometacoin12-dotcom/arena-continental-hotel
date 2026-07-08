@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arena Continental Hotel — Apo, Abuja</title>
+<meta name="description" content="Arena Continental Hotel — modern, upscale hotel and serviced apartments in Apo, Abuja. Book your stay today.">
+<style>
+  :root{
+    --ink:#1c1a17;
+    --ink-soft:#28241f;
+    --panel:#211e19;
+    --gold:#cdb896;
+    --gold-soft:#eee3cd;
+    --cream:#f3ece0;
+    --muted:#b3a897;
+    --line:rgba(238,227,205,0.14);
+    --glass:rgba(243,236,224,0.06);
+    --glass-strong:rgba(243,236,224,0.11);
+    --glass-border:rgba(255,255,255,0.16);
+    --radius:26px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+    background:
+      radial-gradient(1100px 700px at 85% -10%, rgba(205,184,150,0.10), transparent 60%),
+      radial-gradient(900px 600px at -10% 30%, rgba(205,184,150,0.06), transparent 55%),
+      var(--ink);
+    color:var(--cream);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+    font-weight:600;
+    letter-spacing:-0.02em;
+  }
+  .glass{
+    background:linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
+    -webkit-backdrop-filter:blur(22px) saturate(160%);
+    backdrop-filter:blur(22px) saturate(160%);
+    border:1px solid var(--glass-border);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 14px rgba(0,0,0,0.18), 0 20px 50px rgba(0,0,0,0.30);
+  }
+  .blob{
+    position:absolute; border-radius:50%; filter:blur(50px); pointer-events:none;
+    background:radial-gradient(circle at 30% 30%, rgba(238,227,205,0.55), rgba(238,227,205,0.05) 70%);
+    animation:blobDrift 16s ease-in-out infinite alternate;
+  }
+  @keyframes blobDrift{ from{transform:translate(0,0) scale(1);} to{transform:translate(-30px,30px) scale(1.15);} }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.28em;
+    font-size:12px;
+    color:var(--gold);
+    font-weight:600;
+  }
+
+  /* NAV */
+  header{
+    position:fixed; top:16px; left:16px; right:16px; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 30px;
+    border-radius:999px;
+    background:rgba(40,36,31,0.32);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    backdrop-filter:blur(18px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.14);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.16), 0 12px 30px rgba(0,0,0,0.25);
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  header.scrolled{
+    background:rgba(28,25,20,0.55);
+    backdrop-filter:blur(24px) saturate(180%);
+    -webkit-backdrop-filter:blur(24px) saturate(180%);
+    padding:13px 30px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.2), 0 16px 40px rgba(0,0,0,0.4);
+  }
+  .brand{
+    font-family:Georgia,serif;
+    font-size:20px;
+    letter-spacing:0.06em;
+  }
+  .brand b{color:var(--gold); font-weight:400;}
+  nav ul{list-style:none; display:flex; gap:34px;}
+  nav a{
+    font-size:13px; text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--cream); opacity:0.85; transition:opacity .2s, color .2s;
+  }
+  nav a:hover{opacity:1; color:var(--gold);}
+  .nav-cta{
+    border:1px solid rgba(255,255,255,0.28); color:var(--gold-soft);
+    background:rgba(255,255,255,0.06);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    padding:10px 22px; border-radius:999px; font-size:12px;
+    letter-spacing:0.14em; text-transform:uppercase;
+    transition:background .25s, color .25s, border-color .25s;
+  }
+  .nav-cta:hover{background:var(--gold); color:var(--ink); border-color:var(--gold);}
+  .menu-btn{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:0;}
+  .menu-btn span{width:24px; height:2px; background:var(--cream);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    height:100vh; min-height:640px;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+    background:#000;
+  }
+  .hero video, .hero .hero-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    opacity:0.62;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(120% 90% at 15% 0%, rgba(205,184,150,0.20), transparent 55%),
+      linear-gradient(180deg, rgba(20,18,15,0.40) 0%, rgba(20,18,15,0.40) 35%, rgba(18,16,13,0.97) 100%);
+    z-index:1;
+  }
+  .hero-glow{
+    position:absolute; width:640px; height:640px; border-radius:50%;
+    background:radial-gradient(circle, rgba(205,184,150,0.32), transparent 65%);
+    top:-160px; right:-160px; z-index:1; filter:blur(20px);
+    animation:drift 14s ease-in-out infinite alternate;
+  }
+  .blob-2{ width:360px; height:360px; bottom:8%; left:-90px; opacity:0.5; z-index:1; animation-duration:20s; }
+  .blob-3{ width:220px; height:220px; top:20%; left:38%; opacity:0.3; z-index:1; animation-duration:12s; }
+  @keyframes drift{ from{transform:translate(0,0) scale(1);} to{transform:translate(-40px,40px) scale(1.12);} }
+  .hero-content{position:relative; z-index:2; padding:0 0 90px; width:100%;}
+  .hero-panel{
+    padding:38px 42px; max-width:760px; border-radius:32px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
+    -webkit-backdrop-filter:blur(26px) saturate(160%);
+    backdrop-filter:blur(26px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.16);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 16px rgba(0,0,0,0.2), 0 24px 60px rgba(0,0,0,0.35);
+  }
+  .hero-content .eyebrow{opacity:0; animation:riseIn .9s ease forwards; animation-delay:.15s;}
+  .hero-content h1{
+    font-size:clamp(40px, 6.4vw, 84px);
+    line-height:1.04;
+    margin:18px 0 22px;
+    max-width:820px;
+    opacity:0; animation:riseIn 1s ease forwards; animation-delay:.35s;
+  }
+  .hero-content h1 em{font-style:italic; color:var(--gold-soft);}
+  .hero-content p{
+    max-width:520px; color:var(--muted); font-size:16px;
+    opacity:0; animation:riseIn 1s ease forwards; animation-delay:.55s;
+  }
+  .hero-actions{
+    margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;
+    opacity:0; animation:riseIn 1s ease forwards; animation-delay:.75s;
+  }
+  @keyframes riseIn{ from{opacity:0; transform:translateY(26px);} to{opacity:1; transform:translateY(0);} }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:16px 30px; border-radius:999px; font-size:13px;
+    text-transform:uppercase; letter-spacing:0.14em; font-weight:600;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-primary{background:var(--gold); color:var(--ink); box-shadow:inset 0 1px 0 rgba(255,255,255,0.4);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:inset 0 1px 0 rgba(255,255,255,0.4), 0 12px 28px rgba(205,184,150,0.35);}
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,0.28); color:var(--cream);
+    background:rgba(255,255,255,0.06);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold); transform:translateY(-2px); background:rgba(255,255,255,0.1);}
+
+  .hero-stats{
+    position:relative; z-index:2;
+    display:flex; gap:52px; margin-top:56px; flex-wrap:wrap;
+    padding-top:26px; border-top:1px solid var(--line);
+  }
+  .hero-stats div b{
+    display:block; font-family:Georgia,serif; font-size:30px; color:var(--gold-soft);
+  }
+  .hero-stats div span{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.12em;}
+
+  .scroll-cue{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:2;
+    width:26px; height:42px; border:1px solid rgba(255,255,255,0.5); border-radius:20px;
+  }
+  .scroll-cue::before{
+    content:""; position:absolute; top:8px; left:50%; width:4px; height:8px; margin-left:-2px;
+    background:var(--gold); border-radius:2px; animation:scrollDot 1.8s ease infinite;
+  }
+  @keyframes scrollDot{ 0%{opacity:1; top:8px;} 70%{opacity:0; top:22px;} 100%{opacity:0; top:8px;} }
+
+  /* SECTION shared */
+  section{padding:110px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(30px,3.6vw,46px); margin-top:14px; color:var(--cream);}
+  .section-head p{color:var(--muted); margin-top:16px; font-size:16px;}
+
+  /* ABOUT */
+  .about{background:var(--ink);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  .about-media{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:4/5; border:1px solid var(--glass-border);}
+  .about-media img{width:100%; height:100%; object-fit:cover;}
+  .about-badge{
+    position:absolute; bottom:18px; left:18px; right:18px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04));
+    -webkit-backdrop-filter:blur(20px) saturate(160%); backdrop-filter:blur(20px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.22); border-radius:20px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.24), 0 12px 30px rgba(0,0,0,0.3);
+    padding:18px 20px; display:flex; gap:16px; align-items:center;
+  }
+  .about-badge b{font-family:Georgia,serif; font-size:26px; color:var(--gold-soft); display:block;}
+  .about-badge span{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;}
+  .about-copy p{color:var(--muted); margin-bottom:18px; font-size:16px;}
+  .checklist{list-style:none; margin-top:26px; display:grid; gap:14px;}
+  .checklist li{display:flex; gap:12px; align-items:flex-start; font-size:15px; color:var(--cream);}
+  .checklist li::before{
+    content:"✓"; flex:0 0 auto; width:22px; height:22px; border-radius:50%;
+    background:rgba(201,162,75,0.16); color:var(--gold); font-size:12px;
+    display:flex; align-items:center; justify-content:center; margin-top:2px;
+  }
+
+  /* AMENITIES */
+  .amenities{background:transparent; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .amenity-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .amenity-card{
+    padding:34px 26px; border-radius:22px; transition:transform .3s ease, background .3s ease;
+    background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    -webkit-backdrop-filter:blur(18px) saturate(150%); backdrop-filter:blur(18px) saturate(150%);
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.14), 0 14px 34px rgba(0,0,0,0.22);
+  }
+  .amenity-card:hover{background:linear-gradient(135deg, rgba(255,255,255,0.13), rgba(255,255,255,0.04)); transform:translateY(-4px);}
+  .amenity-icon{
+    width:44px; height:44px; border-radius:12px; background:rgba(205,184,150,0.16);
+    display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+    color:var(--gold); font-size:20px;
+  }
+  .amenity-card h3{font-size:18px; color:var(--cream); margin-bottom:8px;}
+  .amenity-card p{font-size:14px; color:var(--muted);}
+
+  /* GALLERY */
+  .gallery{background:var(--ink);}
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:200px; gap:14px;
+  }
+  .gallery-grid a{border-radius:20px; overflow:hidden; position:relative; display:block; border:1px solid var(--glass-border);}
+  .gallery-grid img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .gallery-grid a:hover img{transform:scale(1.08);}
+  .gallery-grid a::after{
+    content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(20,18,15,0.6));
+    opacity:0; transition:opacity .3s ease;
+  }
+  .gallery-grid a:hover::after{opacity:1;}
+  .g-tall{grid-row:span 2;}
+  .g-wide{grid-column:span 2;}
+
+  /* TESTIMONIAL / STRIP */
+  .strip{
+    background:linear-gradient(120deg, rgba(205,184,150,0.10), transparent 60%), var(--panel);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:90px 0;
+  }
+  .strip blockquote{
+    font-family:Georgia,serif; font-size:clamp(24px,3vw,34px); max-width:820px; color:var(--cream);
+    font-style:italic; line-height:1.5;
+  }
+  .strip cite{display:block; margin-top:22px; font-style:normal; color:var(--gold); font-size:13px; letter-spacing:0.08em; text-transform:uppercase;}
+
+  /* LOCATION / CONTACT */
+  .location{background:var(--ink);}
+  .location-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px;}
+  .info-list{list-style:none; display:grid; gap:16px; margin-top:30px;}
+  .info-list li{
+    display:flex; gap:16px; align-items:flex-start; padding:16px 18px; border-radius:18px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+    -webkit-backdrop-filter:blur(14px) saturate(150%); backdrop-filter:blur(14px) saturate(150%);
+    border:1px solid rgba(255,255,255,0.10);
+  }
+  .info-list b{display:block; font-size:14px; color:var(--gold); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;}
+  .info-list span{color:var(--muted); font-size:15px;}
+  .info-icon{
+    width:38px; height:38px; border-radius:10px; background:rgba(205,184,150,0.16);
+    display:flex; align-items:center; justify-content:center; color:var(--gold); flex:0 0 auto;
+  }
+  .map-card{border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); min-height:420px; box-shadow:0 20px 50px rgba(0,0,0,0.3);}
+  .map-card iframe{width:100%; height:100%; min-height:420px; border:0; filter:grayscale(0.5) contrast(1.05) brightness(0.92) sepia(0.12);}
+
+  /* CTA BAND */
+  .cta-band{
+    position:relative; overflow:hidden;
+    background:linear-gradient(120deg,#3a3226,#1c1a17 60%);
+    border-top:1px solid var(--line);
+    padding:90px 0; text-align:center;
+  }
+  .cta-band .wrap{position:relative; z-index:2;}
+  .cta-band h2{font-size:clamp(30px,4vw,48px); margin-bottom:18px;}
+  .cta-band p{color:var(--muted); max-width:520px; margin:0 auto 34px;}
+  .cta-buttons{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+
+  /* FOOTER */
+  footer{
+    background:rgba(33,30,25,0.65);
+    -webkit-backdrop-filter:blur(20px) saturate(150%); backdrop-filter:blur(20px) saturate(150%);
+    border-top:1px solid var(--line); padding:56px 0 28px;
+  }
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; margin-bottom:40px;}
+  .footer-grid h4{color:var(--gold-soft); font-size:15px; margin-bottom:16px; font-weight:400;}
+  .footer-grid p, .footer-grid a{color:var(--muted); font-size:14px;}
+  .footer-grid ul{list-style:none; display:grid; gap:10px;}
+  .footer-grid ul a:hover{color:var(--gold);}
+  .footer-bottom{
+    border-top:1px solid var(--line); padding-top:24px; display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:12px; font-size:13px; color:var(--muted);
+  }
+
+  @media (max-width: 900px){
+    nav, .nav-cta{display:none;}
+    .menu-btn{display:flex;}
+    .about-grid, .location-grid{grid-template-columns:1fr;}
+    .amenity-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:160px;}
+    .g-wide{grid-column:span 2;}
+    .footer-grid{grid-template-columns:1fr;}
+    .hero-stats{gap:30px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="brand">ARENA <b>CONTINENTAL</b></div>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <a class="nav-cta" href="tel:+2347062636468">+234 706 263 6468</a>
+  <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<section class="hero" id="top">
+  <video autoplay muted loop playsinline poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/be48e9bb-3528-423a-afbf-3eaf5b04e2ec.png" id="heroVideo">
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/hf_20260707_230154_24d804d1-ab20-4879-af1c-f079717c9f25.mp4" type="video/mp4" id="heroVideoSource">
+  </video>
+  <img class="hero-img" id="heroFallbackImg" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/be48e9bb-3528-423a-afbf-3eaf5b04e2ec.png" alt="Arena Continental Hotel facade">
+  <div class="hero-glow"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="wrap hero-content">
+    <div class="hero-panel glass">
+      <div class="eyebrow">Apo · Abuja, FCT</div>
+      <h1>Modern comfort, <em>continental</em> hospitality.</h1>
+      <p>A contemporary hotel and serviced apartment address in the heart of Apo, Abuja — designed for travelers, business stays and long-term guests who expect more.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+2347062636468">Book a Room</a>
+        <a class="btn btn-ghost" href="#gallery">View the Property</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>4</b><span>Storey Building</span></div>
+        <div><b>24/7</b><span>Front Desk</span></div>
+        <div><b>100%</b><span>Guest Focused</span></div>
+        <div><b>Apo</b><span>Prime Abuja Location</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-media">
+      <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/2bf53456-3d6e-4c68-a238-c41095566c8a.png" alt="Arena Continental Hotel entrance">
+      <div class="about-badge">
+        <b>Est. Apo</b>
+        <span>Purpose-built hospitality &amp; residences</span>
+      </div>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow">About the Hotel</div>
+      <h2>A fresh landmark for stays in Apo</h2>
+      <p>Arena Continental Hotel brings a clean, modern silhouette to the Apo skyline — a secure, gated property with private parking, tiled balconies and a calm residential setting just off Nnanna Ukaegbu Street, minutes from the High Court of the Federal Capital Territory and Apo's main commercial strip.</p>
+      <p>Whether you're in Abuja for business, a short city break, or need a serviced apartment for an extended stay, the property is built around comfort, security and straightforward, attentive service.</p>
+      <ul class="checklist">
+        <li>Gated, secured compound with on-site parking</li>
+        <li>Hotel rooms &amp; serviced apartment options</li>
+        <li>Minutes from Apo Resettlement, hospitals &amp; the High Court FCT</li>
+        <li>24-hour front desk and support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="amenities" id="amenities">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why Stay With Us</div>
+      <h2>Everything a modern stay needs</h2>
+      <p>Considered details across every room and shared space, built for both short visits and extended residency.</p>
+    </div>
+    <div class="amenity-grid">
+      <div class="amenity-card">
+        <div class="amenity-icon">⌂</div>
+        <h3>Secure Compound</h3>
+        <p>Gated entrance, on-site parking and round-the-clock security for total peace of mind.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">✆</div>
+        <h3>24/7 Front Desk</h3>
+        <p>Attentive staff on hand at any hour for check-in, requests and local guidance.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">❄</div>
+        <h3>Air-Conditioned Rooms</h3>
+        <p>Comfortable, well-ventilated rooms and apartments finished to a modern standard.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">⚡</div>
+        <h3>Reliable Power &amp; Water</h3>
+        <p>Consistent utilities so your stay is never interrupted, day or night.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🚗</div>
+        <h3>Private Parking</h3>
+        <p>Ample on-site parking for guests arriving by car, all within the gated compound.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🛏</div>
+        <h3>Serviced Apartments</h3>
+        <p>Flexible short and long-stay apartment options for extended visits to Abuja.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">📍</div>
+        <h3>Prime Apo Location</h3>
+        <p>Close to the High Court FCT, hospitals, pharmacies and Apo's commercial centre.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">☎</div>
+        <h3>Direct Booking</h3>
+        <p>Call or message the front desk directly — no third-party mark-ups.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Gallery</div>
+      <h2>The property, up close</h2>
+      <p>A look at the exterior and grounds of Arena Continental Hotel in Apo, Abuja.</p>
+    </div>
+    <div class="gallery-grid">
+      <a href="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/be48e9bb-3528-423a-afbf-3eaf5b04e2ec.png" target="_blank" class="g-wide g-tall">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/be48e9bb-3528-423a-afbf-3eaf5b04e2ec.png" alt="Hotel facade view 1">
+      </a>
+      <a href="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/405dabc7-5776-4ae0-81e5-dcc89b12e33c.png" target="_blank">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/405dabc7-5776-4ae0-81e5-dcc89b12e33c.png" alt="Hotel entrance and gate">
+      </a>
+      <a href="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/2bf53456-3d6e-4c68-a238-c41095566c8a.png" target="_blank">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/2bf53456-3d6e-4c68-a238-c41095566c8a.png" alt="Hotel front elevation">
+      </a>
+      <a href="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/9a28343e-8e17-4a59-be36-9d342a653d18.png" target="_blank">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/9a28343e-8e17-4a59-be36-9d342a653d18.png" alt="Hotel exterior detail">
+      </a>
+      <a href="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/d67a23f2-f819-4390-924a-6556a63ffc3a.png" target="_blank" class="g-wide">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/d67a23f2-f819-4390-924a-6556a63ffc3a.png" alt="Hotel compound and parking">
+      </a>
+      <a href="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/09d4e211-1f1d-45a1-91fd-b629487c5834.png" target="_blank">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3FJQEeVmAyEOrJgqtuAumu2cMiI/09d4e211-1f1d-45a1-91fd-b629487c5834.png" alt="Hotel street view">
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <div class="eyebrow">Guest Promise</div>
+    <blockquote>"Clean, secure, and quietly modern — built to feel like a landmark stay in Apo, not just another address."
+    <cite>— Arena Continental Hotel</cite></blockquote>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="wrap location-grid">
+    <div>
+      <div class="eyebrow">Find Us</div>
+      <h2>Nnanna Ukaegbu Street, Apo</h2>
+      <ul class="info-list">
+        <li>
+          <div class="info-icon">⌖</div>
+          <div><b>Address</b><span>Nnanna Ukaegbu Street, Apo, Abuja Municipal Area Council, Abuja, FCT 900104, Nigeria</span></div>
+        </li>
+        <li>
+          <div class="info-icon">☎</div>
+          <div><b>Phone</b><span><a href="tel:+2347062636468">+234 706 263 6468</a></span></div>
+        </li>
+        <li>
+          <div class="info-icon">⏱</div>
+          <div><b>Front Desk</b><span>Open 24 hours, every day</span></div>
+        </li>
+        <li>
+          <div class="info-icon">✉</div>
+          <div><b>Category</b><span>Hotel &amp; Serviced Apartments</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="map-card">
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=8.972209,7.502720&z=16&output=embed"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="blob" style="width:420px;height:420px;top:-140px;left:8%;opacity:0.35;"></div>
+  <div class="blob" style="width:300px;height:300px;bottom:-100px;right:10%;opacity:0.3;animation-duration:18s;"></div>
+  <div class="wrap">
+    <div class="eyebrow">Reserve Your Stay</div>
+    <h2>Ready when you are.</h2>
+    <p>Call or message the Arena Continental Hotel front desk directly to check availability and book your room or apartment.</p>
+    <div class="cta-buttons">
+      <a class="btn btn-primary" href="tel:+2347062636468">Call +234 706 263 6468</a>
+      <a class="btn btn-ghost" href="https://wa.me/2347062636468" target="_blank">Message on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px;">ARENA <b>CONTINENTAL</b></div>
+        <p>A modern hotel and serviced apartment address in Apo, Abuja — built for comfortable, secure stays.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+2347062636468">+234 706 263 6468</a></li>
+          <li><span>Nnanna Ukaegbu Street, Apo, Abuja, FCT</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Arena Continental Hotel. All rights reserved.</span>
+      <span>Apo, Abuja Municipal Area Council, FCT 900104</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hero video: use generated video if a real source is set, otherwise fall back to the static image.
+  const heroVideo = document.getElementById('heroVideo');
+  const heroSource = document.getElementById('heroVideoSource');
+  const heroFallback = document.getElementById('heroFallbackImg');
+  if (heroSource.getAttribute('src')) {
+    heroVideo.style.display = 'block';
+    heroFallback.style.display = 'none';
+    heroVideo.load();
+  } else {
+    heroVideo.style.display = 'none';
+    heroFallback.style.display = 'block';
+  }
+
+  // Mobile menu toggle (simple show/hide of nav links list appended to header)
+  const menuBtn = document.querySelector('.menu-btn');
+  menuBtn.addEventListener('click', () => {
+    const nav = document.querySelector('nav');
+    nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+    if (nav.style.display === 'block') {
+      nav.style.position = 'fixed';
+      nav.style.top = '70px';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.background = 'rgba(28,25,20,0.95)';
+      nav.style.backdropFilter = 'blur(20px) saturate(160%)';
+      nav.style.borderRadius = '20px';
+      nav.style.padding = '20px 28px';
+      nav.querySelector('ul').style.flexDirection = 'column';
+      nav.querySelector('ul').style.gap = '18px';
+    }
+  });
+</script>
+</body>
+</html>
