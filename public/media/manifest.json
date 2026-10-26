@@ -1,0 +1,224 @@
+{
+  "suite-grand": {
+    "source": "TSL_1140",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "room-desk": {
+    "source": "TSL_1372",
+    "natural": [
+      4016,
+      5294
+    ],
+    "aspect": 0.7586,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "room-lounge": {
+    "source": "TSL_1392",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "stair-detail": {
+    "source": "TSL_1427",
+    "natural": [
+      3968,
+      5646
+    ],
+    "aspect": 0.7028,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "neighbourhood-pharmacy": {
+    "source": "TSL_1535",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "dining-room": {
+    "source": "TSL_1887",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "dining-table": {
+    "source": "TSL_1894",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "dining-booth": {
+    "source": "TSL_1898",
+    "natural": [
+      5615,
+      3809
+    ],
+    "aspect": 1.4741,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "dining-wide": {
+    "source": "TSL_1900",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "pool-night": {
+    "source": "TSL_1911",
+    "natural": [
+      3936,
+      2492
+    ],
+    "aspect": 1.5795,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "pool-social-1": {
+    "source": "TSL_1237",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "pool-social-2": {
+    "source": "TSL_1263",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "pool-social-3": {
+    "source": "TSL_1277",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "pool-social-4": {
+    "source": "TSL_1281",
+    "natural": [
+      6016,
+      3815
+    ],
+    "aspect": 1.5769,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "hero-golden": {
+    "natural": [
+      2000,
+      1116
+    ],
+    "aspect": 1.7921,
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "dir": "building"
+  },
+  "twilight": {
+    "natural": [
+      2000,
+      1116
+    ],
+    "aspect": 1.7921,
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "dir": "building"
+  }
+}

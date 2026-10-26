@@ -1,0 +1,46 @@
+{
+  "trailingSlash": false,
+  "directoryListing": false,
+  "redirects": [
+    { "source": "/rooms", "destination": "/#stay", "type": 301 },
+    { "source": "/rooms/:slug", "destination": "/#stay", "type": 301 },
+    { "source": "/book", "destination": "/#stay", "type": 301 },
+    { "source": "/dining", "destination": "/#dining", "type": 301 },
+    { "source": "/spa", "destination": "/#experience", "type": 301 },
+    { "source": "/events", "destination": "/#occasions", "type": 301 },
+    { "source": "/events/:slug", "destination": "/#occasions", "type": 301 },
+    { "source": "/gallery", "destination": "/#gallery", "type": 301 },
+    { "source": "/about", "destination": "/#about", "type": 301 },
+    { "source": "/contact", "destination": "/#contact", "type": 301 }
+  ],
+  "headers": [
+    {
+      "source": "**/*.html",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "public/fonts/**",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "**/*.@(css|js)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "public/@(media|building)/**",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    },
+    {
+      "source": "**/*.avif",
+      "headers": [{ "key": "Content-Type", "value": "image/avif" }]
+    },
+    {
+      "source": "**",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ]
+}
